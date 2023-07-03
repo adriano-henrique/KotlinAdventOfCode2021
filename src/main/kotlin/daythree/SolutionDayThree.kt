@@ -28,6 +28,7 @@ enum class BitRatingType {
 
 class SolutionDayThree: ISolution {
     override val filePath = "src/main/kotlin/daythree/input.txt"
+    override val day = "Day Three"
 
     fun getNumberFromBinaryArray(binaryArray: List<Int>): Int {
         var ans = 0

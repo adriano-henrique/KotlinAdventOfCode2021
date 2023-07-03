@@ -1,12 +1,10 @@
 package dayone
 
-import java.io.File
+import util.ISolution
 
-class SolutionDayOne {
-    fun readFile(): List<String> {
-        val fileName = "src/main/kotlin/dayone/input.txt"
-        return File(fileName).readLines()
-    }
+class SolutionDayOne: ISolution {
+    override val filePath: String = "src/main/kotlin/dayone/input.txt"
+    override val day: String = "Day One"
 
     fun countIncrease(list: List<Int>): Int {
         val n = list.size - 1
@@ -22,12 +20,12 @@ class SolutionDayOne {
         return count
     }
 
-    fun solvePartOne(): Int {
+    override fun solvePartOne(): Int {
         val fileLinesInt: List<Int> = this.readFile().map { it.toInt() }
         return this.countIncrease(fileLinesInt)
     }
 
-    fun solvePartTwo(): Int {
+    override fun solvePartTwo(): Int {
         val fileLinesInt: List<Int> = this.readFile().map { it.toInt() }
         val n = fileLinesInt.size - 1
         val threeStepArray: MutableList<Int> = mutableListOf()

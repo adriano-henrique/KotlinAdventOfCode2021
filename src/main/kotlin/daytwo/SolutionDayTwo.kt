@@ -1,16 +1,13 @@
 package daytwo
 
-import java.io.File
+import util.ISolution
 import kotlin.math.abs
 
-class SolutionDayTwo {
+class SolutionDayTwo: ISolution {
+    override val filePath: String = "src/main/kotlin/daytwo/input.txt"
+    override val day: String = "Day Two"
 
-    fun readFile(): List<String> {
-        val fileName = "src/main/kotlin/daytwo/input.txt"
-        return File(fileName).readLines()
-    }
-
-    fun solvePartOne(): Int {
+    override fun solvePartOne(): Int {
         val fileLines = this.readFile()
         var positionX = 0
         var positionY = 0
@@ -29,7 +26,7 @@ class SolutionDayTwo {
         return abs(positionX*positionY)
     }
 
-    fun solvePartTwo(): Int {
+    override fun solvePartTwo(): Int {
         val fileLines = this.readFile()
         var horizontal = 0
         var depth = 0

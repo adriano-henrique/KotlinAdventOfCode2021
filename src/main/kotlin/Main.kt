@@ -6,10 +6,7 @@ fun main() {
     val solutionDayOne = SolutionDayOne()
     val solutionDayTwo = SolutionDayTwo()
     val solutionDayThree = SolutionDayThree()
-    println(solutionDayOne.solvePartOne())
-    println(solutionDayOne.solvePartTwo())
-    println(solutionDayTwo.solvePartOne())
-    println(solutionDayTwo.solvePartTwo())
-    println(solutionDayThree.solvePartOne())
-    println(solutionDayThree.solvePartTwo())
+    println(solutionDayOne.solution())
+    println(solutionDayTwo.solution())
+    println(solutionDayThree.solution())
 }
