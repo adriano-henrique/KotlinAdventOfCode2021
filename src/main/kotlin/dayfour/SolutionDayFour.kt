@@ -16,10 +16,10 @@ class SolutionDayFour: ISolution {
             for (board in boards) {
                 modifyBoard(number, board)
             }
-            val winnerBoard = this.winner(boards)
+            val winnerBoard = this.getWinners(boards)
             if (winnerBoard[0].isNotEmpty()) {
                 winnerNumber = number
-                sumNonSelected = this.getSumNonSelected(winnerBoard)
+                sumNonSelected = this.getSumNonSelected(winnerBoard[0])
                 break
             }
         }
@@ -27,7 +27,31 @@ class SolutionDayFour: ISolution {
     }
 
     override fun solvePartTwo(): Int {
-        return 0
+        val fileLines: List<String> = this.readFile()
+        val selectedNumbers: List<Int> = fileLines[0].split(",").map { it.toInt() }
+        val boards = this.mountBoard(fileLines)
+        var sumNonSelected = 0
+        var lastWinnerNumber = 0
+//        val a = mutableListOf(mutableListOf(-1,-1,-1,-1,32), mutableListOf(-1,-1,-1,-1,45), mutableListOf(70,-1,-1,86,-1),mutableListOf(-1,-1,-1,-1,60),mutableListOf(-1,-1,84,-1,-1))
+
+        for (number in selectedNumbers) {
+            println(number)
+            println(boards)
+            for (board in boards) {
+                modifyBoard(number, board)
+            }
+            val winners = this.getWinners(boards)
+            println(winners)
+            if (boards.size == 1 && winners[0].isNotEmpty()) {
+                lastWinnerNumber = number
+                sumNonSelected = this.getSumNonSelected(boards[0])
+                break
+            }
+            for (winner in winners) {
+                boards.remove(winner)
+            }
+        }
+        return sumNonSelected*lastWinnerNumber
     }
 
     private fun getSumNonSelected(board: BingoBoardType): Int {
@@ -41,13 +65,16 @@ class SolutionDayFour: ISolution {
         }
         return sum
     }
-    private fun winner(boards: MutableList<BingoBoardType>): BingoBoardType {
-        for (board in boards) {
+
+    private fun getWinners(boards: MutableList<BingoBoardType>): MutableList<BingoBoardType> {
+        var boardWinners: MutableList<BingoBoardType> = mutableListOf()
+        for(board in boards) {
             if (this.columnWinner(board) || this.lineWinner(board)) {
-                return board
+                boardWinners.add(board)
             }
         }
-        return mutableListOf(mutableListOf())
+        if (boardWinners.isEmpty()) return mutableListOf(mutableListOf())
+        return boardWinners
     }
 
     private fun lineWinner(board: BingoBoardType): Boolean {
@@ -61,7 +88,7 @@ class SolutionDayFour: ISolution {
 
     private fun columnWinner(board: BingoBoardType): Boolean {
         for (columnIndex in board[0].indices){
-            if (board[columnIndex].all { it == -1 }) {
+            if (board.all { it[columnIndex] == -1 }) {
                 return true
             }
         }
