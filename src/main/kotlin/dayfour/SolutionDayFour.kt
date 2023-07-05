@@ -32,16 +32,12 @@ class SolutionDayFour: ISolution {
         val boards = this.mountBoard(fileLines)
         var sumNonSelected = 0
         var lastWinnerNumber = 0
-//        val a = mutableListOf(mutableListOf(-1,-1,-1,-1,32), mutableListOf(-1,-1,-1,-1,45), mutableListOf(70,-1,-1,86,-1),mutableListOf(-1,-1,-1,-1,60),mutableListOf(-1,-1,84,-1,-1))
 
         for (number in selectedNumbers) {
-            println(number)
-            println(boards)
             for (board in boards) {
                 modifyBoard(number, board)
             }
             val winners = this.getWinners(boards)
-            println(winners)
             if (boards.size == 1 && winners[0].isNotEmpty()) {
                 lastWinnerNumber = number
                 sumNonSelected = this.getSumNonSelected(boards[0])
