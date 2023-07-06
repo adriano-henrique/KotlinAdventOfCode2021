@@ -2,14 +2,22 @@ import dayfour.SolutionDayFour
 import dayone.SolutionDayOne
 import daythree.SolutionDayThree
 import daytwo.SolutionDayTwo
+import dayfive.SolutionDayFive
 
 fun main() {
     val solutionDayOne = SolutionDayOne()
-    val solutionDayTwo = SolutionDayTwo()
-    val solutionDayThree = SolutionDayThree()
-    val solutionDayFour = SolutionDayFour()
     println(solutionDayOne.solution())
+
+    val solutionDayTwo = SolutionDayTwo()
     println(solutionDayTwo.solution())
+
+    val solutionDayThree = SolutionDayThree()
     println(solutionDayThree.solution())
+
+    val solutionDayFour = SolutionDayFour()
     println(solutionDayFour.solution())
+
+    val solutionDayFive = SolutionDayFive()
+    println(solutionDayFive.solution())
+        
 }
