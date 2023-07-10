@@ -20,7 +20,6 @@ fun main() {
 
     val solutionDayFive = SolutionDayFive()
     println(solutionDayFive.solution())
-        
 
     val solutionDaySix = SolutionDaySix()
     println(solutionDaySix.solution())
