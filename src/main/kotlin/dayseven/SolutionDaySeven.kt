@@ -19,7 +19,14 @@ class SolutionDaySeven: ISolution {
     }
 
     override fun solvePartTwo(): Int {
-        return 0
+        val fileLines = this.readFile()
+        var amountValueMap = mutableMapOf<Int, Int>()
+        val crabPositions = fileLines[0].split(",").map{ it.toInt() }
+        this.mountMap(amountValueMap, crabPositions)
+        val minCost = amountValueMap.keys.getCrabRange().minOf { crabPosition ->
+            amountValueMap.map {(crab, crabCount) -> (abs((crabPosition - crab))*(abs(crabPosition - crab) + 1)/2)*crabCount}.sum()
+        }
+        return minCost
     }
 
     private fun MutableSet<Int>.getCrabRange(): IntRange =
