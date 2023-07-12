@@ -5,6 +5,7 @@ import daytwo.SolutionDayTwo
 import dayfive.SolutionDayFive
 import daysix.SolutionDaySix
 import dayseven.SolutionDaySeven
+import dayeight.SolutionDayEight
 
 fun main() {
     val solutionDayOne = SolutionDayOne()
@@ -27,5 +28,9 @@ fun main() {
 
     val solutionDaySeven = SolutionDaySeven()
     println(solutionDaySeven.solution())
+        
+
+    val solutionDayEight = SolutionDayEight()
+    println(solutionDayEight.solution())
         
 }
